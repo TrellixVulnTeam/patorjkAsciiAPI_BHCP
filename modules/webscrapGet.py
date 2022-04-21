@@ -74,5 +74,5 @@ def generateAscii(style : str, characterWidth : str = 'Default', characterHeight
 
 
 if __name__ == "__main__":
-    asciiArt = getAscii("https://patorjk.com/software/taag/#p=display&f=Big&t=PyScii")
+    asciiArt = generateAscii('Big', 'default', 'default', 'Jemla')
     print(asciiArt)

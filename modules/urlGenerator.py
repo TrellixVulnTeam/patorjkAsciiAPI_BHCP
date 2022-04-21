@@ -10,24 +10,24 @@ def createUrl(textStyle : str, characterWidth : str, characterHeight : str, text
     """
     
     widthOptions = {
-        "Full" : 0,
-        "Fitted" : 1,
-        "Smush (R)" : 2,
-        "Smush (U)" : 3,
-        "Default" : None
+        "full" : '0',
+        "fitted" : '1',
+        "smush (r)" : '2',
+        "smush (u)" : '3',
+        "default" : ''
     }
     
     heightOptions = {
-        "Full" : 0,
-        "Fitted" : 1,
-        "Smush (R)" : 2,
-        "Smush (U)" : 3,
-        "Default" : None
+        "full" : '0',
+        "fitted" : '1',
+        "smush (r)" : '2',
+        "smush (u)" : '3',
+        "default" : ''
     }
     
     
-    widthOption = widthOptions[characterWidth]
-    heightOption = heightOptions[characterHeight]
+    widthOption = widthOptions[characterWidth.lower()]
+    heightOption = heightOptions[characterHeight.lower()]
     
     return f"https://patorjk.com/software/taag/#p=display&h={widthOption}&v={heightOption}&f={textStyle}&t={text}"
 

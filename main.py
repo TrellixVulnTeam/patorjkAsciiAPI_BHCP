@@ -10,13 +10,9 @@ import modules.webscrapGet as wG
 app = Flask(__name__)
 
 
-@app.route("/get-calendar/<year>/<month>", methods=['GET'])
-def getCalendar(year, month):
-    strCalendar = calendar.month(int(year), int(month))
-    
-    return json.dumps({'calendar' : strCalendar})
-
-
+@app.route("/get-ascii/<style>/<character_width>/<character_height>/<text>", methods=['GET'])
+def getCalendar(style : str, character_width : str, character_height : str, text : str):
+    return wG.generateAscii(style=style, characterWidth=character_width, characterHeight=character_height, text=text)
 
 
 app.run(debug=True)
