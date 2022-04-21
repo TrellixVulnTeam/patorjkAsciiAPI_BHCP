@@ -56,7 +56,7 @@ def styleExists(style : str) -> bool():
     return style in fontList
 
 
-def generateAscii(style : str, text : str) -> str():
+def generateAscii(style : str, characterWidth : str = 'Default', characterHeight : str = 'Default', text : str = 'Joe Mama') -> str():
     """Function that use previouses to generate ASCII art
 
     Args:
@@ -67,7 +67,7 @@ def generateAscii(style : str, text : str) -> str():
         asciiArt (str): The ASCII art generated
     """
 
-    link = urlGenerator.createUrl(textStyle=style, text=text)
+    link = urlGenerator.createUrl(textStyle=style, characterWidth=characterWidth, characterHeight=characterHeight, text=text)
     asciiArt = getAscii(link)
 
     return asciiArt
