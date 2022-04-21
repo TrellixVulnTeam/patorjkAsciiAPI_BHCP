@@ -28,8 +28,7 @@ def getAscii(siteURL : str):
     # Getting the ASCII art
     asciiArt = driver.find_element(By.ID, "taag_output_text")
 
-    # If no ASCII art has been got, the program will return an empty
-    # string
+    # If no ASCII art has been got, the program will return an empty string
     if not asciiArt:
         return ""
         
@@ -60,13 +59,16 @@ def generateAscii(style : str, characterWidth : str = 'Default', characterHeight
     """Function that use previouses to generate ASCII art
 
     Args:
-        style (str): The style you want to generate you ASCII art
-        text (str): The text you want to convert to ASCII art
+        textStyle (str): the text style you want
+        characterWidth (str): the character width
+        characterHeight (str): the character height
+        text (str): the text you want to convert to ASCII art
     
     Returns:
         asciiArt (str): The ASCII art generated
     """
 
+    # Creating the URL and webscrap the ASCII art generated
     link = urlGenerator.createUrl(textStyle=style, characterWidth=characterWidth, characterHeight=characterHeight, text=text)
     asciiArt = getAscii(link)
 
