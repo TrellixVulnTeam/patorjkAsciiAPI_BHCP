@@ -28,41 +28,40 @@ print("""
 
 
 
-def downloadFile(link : str, output : str):
+def download_file(link : str, output : str):
     response = requests.get(link, allow_redirects=True)
     
     with open(output, 'wb') as f:
-        fileContent = response.content
-        f.write(fileContent)
+        f.write(response.content)
 
 
-def isGeckoInstalled():
+def is_gecko_installed():
     try:
-        driverOptions = webdriver.FirefoxOptions()
-        driverOptions.headless = True
+        driver_options = webdriver.FirefoxOptions()
+        driver_options.headless = True
         
-        driver = webdriver.Firefox(options=driverOptions)
+        driver = webdriver.Firefox(options=driver_options)
         return True
     except selenium.common.exceptions.WebDriverException:
         return False
 
 
-def untarFile(file : str):
+def untar_file(file : str):
     with tarfile.open(file, 'r') as tarFile:
         tarFile.extractall('/usr/local/bin')
     
 
 
-if isGeckoInstalled():
+if is_gecko_installed():
     print("[+] Geckodriver is already installed on your system, exiting...\n")
     os.remove('geckodriver.log')
     sys.exit()
 
 
-linuxDistributionName = distro.name()
+os_name = distro.name()
 
 
-geckodriverLink = {
+installer_link = {
     "Debian" : (f'{LINK}/geckodriver-{CURRENT_VERSION}-linux64.tar.gz', f'geckodriver-{CURRENT_VERSION}-linux64.tar.gz'),
     "Kali linux" : (f'{LINK}/geckodriver-{CURRENT_VERSION}-linux64.tar.gz', f'geckodriver-{CURRENT_VERSION}-linux64.tar.gz'),
     "Parrot OS" : (f'{LINK}/geckodriver-{CURRENT_VERSION}-linux64.tar.gz', f'geckodriver-{CURRENT_VERSION}-linux64.tar.gz'),
@@ -76,19 +75,19 @@ geckodriverLink = {
 }
 
 
-for distro in geckodriverLink.keys():
-    link, filename = geckodriverLink[distro]
+for distro in installer_link.keys():
+    link, filename = installer_link[distro]
     
-    if distro.lower() in linuxDistributionName.lower():        
+    if distro.lower() in os_name.lower():        
         os.mkdir('Geckodriver')
         
-        downloadFile(link, f"./Geckodriver/{filename}")
-        untarFile(f'./Geckodriver/{filename}')
+        download_file(link, f"./Geckodriver/{filename}")
+        untar_file(f'./Geckodriver/{filename}')
         break
 else:
     time.sleep(2)
-    errorText = termcolor.colored("[/!\\] Your OS has not been recognized, please see manually_install_geckodriver.txt\n", 'red')
-    print(errorText)
+    error_text = termcolor.colored("[/!\\] Your OS has not been recognized, please see manually_install_geckodriver.txt\n", 'red')
+    print(error_text)
     sys.exit()
 
 
