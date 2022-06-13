@@ -1,4 +1,5 @@
 import json
+import requests
 
 from flask import Flask
 
@@ -6,6 +7,14 @@ import modules.webscrapGet as wG
 
 
 app = Flask(__name__)
+
+
+@app.route("/", methods=["GET"])
+def root() -> str :
+    response = requests.get("https://api.chucknorris.io/jokes/random")
+    joke = json.loads(response.text)["value"]
+
+    return joke
 
 
 @app.route("/get-ascii/<style>/<character_width>/<character_height>/<text>", methods=['GET'])
