@@ -11,6 +11,12 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def root() -> str :
+    """Get a random joke about our lord Chuck Norris.
+
+    Returns:
+        str: The joke about our lord Chuck Norris
+    """
+
     response = requests.get("https://api.chucknorris.io/jokes/random")
     joke = json.loads(response.text)["value"]
 
