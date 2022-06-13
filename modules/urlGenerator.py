@@ -37,12 +37,4 @@ def create_url(text_style : str, character_width : str, character_height : str, 
 
 
 if __name__ == "__main__":
-    import webbrowser
-
-    style = input("Enter text style : ")
-    content = input("Enter text : ")
-    
-    testUrl = create_url(text_style=style, character_width='Default', character_height='Default',text=content)
-    
-    print(testUrl)
-    webbrowser.open(testUrl)
+    print("When Chuck Norris plays russian roulette and loses, the one who dies is the gun.")

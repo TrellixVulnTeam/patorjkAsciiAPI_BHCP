@@ -85,5 +85,4 @@ def generate_ascii(style : str, character_width : str = 'Default', character_hei
 
 
 if __name__ == "__main__":
-    asciiArt = generate_ascii('Big', 'default', 'default', 'Jemla')
-    print(asciiArt)
+    print("When Chuck Norris smokes a cigarette, the one who has cancer is the cigarette.")
