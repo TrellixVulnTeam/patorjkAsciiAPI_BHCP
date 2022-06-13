@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route("/get-ascii/<style>/<character_width>/<character_height>/<text>", methods=['GET'])
 def get_ascii(style : str, character_width : str, character_height : str, text : str) -> str :
-    """Function that permite to get ASCII from website
+    """Function that permit to get ASCII from website
 
     Args:
         text_style (str): the text style you want

@@ -45,11 +45,20 @@ def get_font_list() -> str :
 
     with open('./modules/textPolices.txt', 'r') as f:
         fontList = f.read()
-    
+
     return fontList
 
 
 def style_exists(style : str) -> bool :
+    """Function that checks if a style exists
+
+    Args:
+        style (str): the style you want to check
+
+    Returns:
+        bool: True if the style exists, False otherwise
+    """
+    
     fontList = get_font_list().split('\n')
 
     return style in fontList
@@ -59,13 +68,13 @@ def generate_ascii(style : str, character_width : str = 'Default', character_hei
     """Function that use previouses to generate ASCII art
 
     Args:
-        textStyle (str): the text style you want
-        characterWidth (str): the character width
-        characterHeight (str): the character height
+        text_style (str): the text style you want
+        character_width (str): the character width
+        character_height (str): the character height
         text (str): the text you want to convert to ASCII art
-    
+
     Returns:
-        asciiArt (str): The ASCII art generated
+        ascii_art (str): The ASCII art generated
     """
 
     # Creating the URL and webscrap the ASCII art generated

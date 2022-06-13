@@ -29,6 +29,13 @@ print("""
 
 
 def download_file(link : str, output : str) -> None :
+    """Downloads a file from a link and saves it to a given output path.
+
+    Args:
+        link (str): the link to the file to download
+        output (str): the path to save the file to
+    """
+    
     response = requests.get(link, allow_redirects=True)
     
     with open(output, 'wb') as f:
@@ -36,6 +43,12 @@ def download_file(link : str, output : str) -> None :
 
 
 def is_gecko_installed() -> bool :
+    """Returns True if geckodriver is installed, False otherwise.
+
+    Returns:
+        bool: True if geckodriver is installed, False otherwise.
+    """
+    
     try:
         driver_options = webdriver.FirefoxOptions()
         driver_options.headless = True
@@ -47,6 +60,12 @@ def is_gecko_installed() -> bool :
 
 
 def untar_file(file : str) -> None:
+    """Untars a file.
+
+    Args:
+        file (str): the path to the file to untar
+    """
+    
     with tarfile.open(file, 'r') as tarFile:
         tarFile.extractall('/usr/local/bin')
     
