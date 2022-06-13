@@ -1,4 +1,4 @@
-def create_url(text_style : str, character_width : str, character_height : str, text : str):
+def create_url(text_style : str, character_width : str, character_height : str, text : str) -> str:
     """Function that will create URL from style and text
 
     Args:

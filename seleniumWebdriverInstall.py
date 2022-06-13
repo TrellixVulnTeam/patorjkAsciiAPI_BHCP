@@ -28,14 +28,14 @@ print("""
 
 
 
-def download_file(link : str, output : str):
+def download_file(link : str, output : str) -> None :
     response = requests.get(link, allow_redirects=True)
     
     with open(output, 'wb') as f:
         f.write(response.content)
 
 
-def is_gecko_installed():
+def is_gecko_installed() -> bool :
     try:
         driver_options = webdriver.FirefoxOptions()
         driver_options.headless = True
@@ -46,7 +46,7 @@ def is_gecko_installed():
         return False
 
 
-def untar_file(file : str):
+def untar_file(file : str) -> None:
     with tarfile.open(file, 'r') as tarFile:
         tarFile.extractall('/usr/local/bin')
     
@@ -59,7 +59,6 @@ if is_gecko_installed():
 
 
 os_name = distro.name()
-
 
 installer_link = {
     "Debian" : (f'{LINK}/geckodriver-{CURRENT_VERSION}-linux64.tar.gz', f'geckodriver-{CURRENT_VERSION}-linux64.tar.gz'),

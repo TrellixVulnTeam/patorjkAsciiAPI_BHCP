@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 import modules.urlGenerator as urlGenerator
 
 
-def get_ascii(url : str):
+def get_ascii(url : str) -> str :
     """Function to get ASCII art from a link
 
     Args:
@@ -36,7 +36,7 @@ def get_ascii(url : str):
     return ascii_art.text
 
 
-def get_font_list() -> str():
+def get_font_list() -> str :
     """Function that returns all ASCII styles availible
 
     Returns:
@@ -49,13 +49,13 @@ def get_font_list() -> str():
     return fontList
 
 
-def style_exists(style : str) -> bool():
+def style_exists(style : str) -> bool :
     fontList = get_font_list().split('\n')
 
     return style in fontList
 
 
-def generate_ascii(style : str, character_width : str = 'Default', character_height : str = 'Default', text : str = 'Joe Mama') -> str():
+def generate_ascii(style : str, character_width : str = 'Default', character_height : str = 'Default', text : str = 'Joe Mama') -> str :
     """Function that use previouses to generate ASCII art
 
     Args:
