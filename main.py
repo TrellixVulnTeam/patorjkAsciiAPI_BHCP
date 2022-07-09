@@ -7,6 +7,7 @@ import modules.webscrapGet as wG
 
 
 app = Flask(__name__)
+default_text = "Despicable Me"
 
 
 @app.route("/", methods=["GET"])
@@ -23,6 +24,10 @@ def root() -> str :
     return joke
 
 
+
+@app.route("/get-ascii/<style>", defaults={"character_width": "default", "character_height": "default", "text": default_text})
+@app.route("/get-ascii/<style>/<character_width>", defaults={"character_height": "default", "text": default_text})
+@app.route("/get-ascii/<style>/<character_width>/<character_height>", defaults={"text": default_text})
 @app.route("/get-ascii/<style>/<character_width>/<character_height>/<text>", methods=['GET'])
 def get_ascii(style : str, character_width : str, character_height : str, text : str) -> str :
     """Function that permit to get ASCII from website
